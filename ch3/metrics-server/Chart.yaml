@@ -1,0 +1,6 @@
+name: metrics-server-umbrella
+version: 0.1.0
+dependencies:
+- name: metrics-server
+  version: 5.9.3
+  repository: https://charts.bitnami.com/bitnami
