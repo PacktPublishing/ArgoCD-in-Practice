@@ -10,3 +10,4 @@ resources:
 
 patchesStrategicMerge:
   - patches/argocd-cm.yaml
+  - patches/argocd-server-deployment.yaml

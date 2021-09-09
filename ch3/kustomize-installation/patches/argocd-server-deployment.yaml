@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-server
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: argocd-server
+          image: quay.io/argoproj/argocd:v2.0.5
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ARGOCD_API_SERVER_REPLICAS
+              value: '3'
