@@ -11,3 +11,5 @@ spec:
     path: ch3/kustomize-installation
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: main
+  syncPolicy:
+    automated: {}
