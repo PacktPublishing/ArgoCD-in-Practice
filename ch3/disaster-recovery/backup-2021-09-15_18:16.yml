@@ -1,0 +1,990 @@
+apiVersion: v1
+data:
+  timeout.reconciliation: 300s
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"timeout.reconciliation":"300s"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"argocd","app.kubernetes.io/name":"argocd-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-cm","namespace":"argocd"}}
+  labels:
+    app.kubernetes.io/instance: argocd
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-cm
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"argocd","app.kubernetes.io/name":"argocd-rbac-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-rbac-cm","namespace":"argocd"}}
+  labels:
+    app.kubernetes.io/instance: argocd
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-rbac-cm
+---
+apiVersion: v1
+data:
+  ssh_known_hosts: |
+    bitbucket.org ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw==
+    github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+    gitlab.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFSMqzJeV9rUzU4kWitGjeR4PWSa29SPqJ1fVkhtj3Hw9xjLVXVYrU9QlYWrOLXBpQ6KWjbjTDTdDkoohFzgbEY=
+    gitlab.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf
+    gitlab.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsj2bNKTBSpIYDEGk9KxsGh3mySTRgMtXL583qmBpzeQ+jqCMRgBqB98u3z++J1sKlXHWfM9dyhSevkMwSbhoR8XIq/U0tCNyokEi/ueaBMCvbcTHhO7FcwzY92WK4Yt0aGROY5qX2UKSeOvuP4D6TPqKF1onrSzH9bx9XUf2lEdWT/ia1NEKjunUqu1xOB/StKDHMoX4/OKyIzuS0q/T1zOATthvasJFoPrAjkohTyaDUz2LN5JoH839hViyEG82yB+MjcFV5MU3N1l1QL3cVUCh93xSaua1N85qivl+siMkPGbO5xR/En4iEY6K2XPASUEMaieWVNTRCtJ4S8H+9
+    ssh.dev.azure.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H
+    vs-ssh.visualstudio.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"ssh_known_hosts":"bitbucket.org ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw==\ngithub.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==\ngitlab.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFSMqzJeV9rUzU4kWitGjeR4PWSa29SPqJ1fVkhtj3Hw9xjLVXVYrU9QlYWrOLXBpQ6KWjbjTDTdDkoohFzgbEY=\ngitlab.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf\ngitlab.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsj2bNKTBSpIYDEGk9KxsGh3mySTRgMtXL583qmBpzeQ+jqCMRgBqB98u3z++J1sKlXHWfM9dyhSevkMwSbhoR8XIq/U0tCNyokEi/ueaBMCvbcTHhO7FcwzY92WK4Yt0aGROY5qX2UKSeOvuP4D6TPqKF1onrSzH9bx9XUf2lEdWT/ia1NEKjunUqu1xOB/StKDHMoX4/OKyIzuS0q/T1zOATthvasJFoPrAjkohTyaDUz2LN5JoH839hViyEG82yB+MjcFV5MU3N1l1QL3cVUCh93xSaua1N85qivl+siMkPGbO5xR/En4iEY6K2XPASUEMaieWVNTRCtJ4S8H+9\nssh.dev.azure.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H\nvs-ssh.visualstudio.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H\n"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"argocd","app.kubernetes.io/name":"argocd-ssh-known-hosts-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-ssh-known-hosts-cm","namespace":"argocd"}}
+  labels:
+    app.kubernetes.io/instance: argocd
+    app.kubernetes.io/name: argocd-ssh-known-hosts-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-ssh-known-hosts-cm
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":null,"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"argocd","app.kubernetes.io/name":"argocd-tls-certs-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-tls-certs-cm","namespace":"argocd"}}
+  labels:
+    app.kubernetes.io/instance: argocd
+    app.kubernetes.io/name: argocd-tls-certs-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-tls-certs-cm
+---
+apiVersion: v1
+data:
+  admin.password: JDJhJDEwJHVIM1NUdG9oZFY1OE0wNUFkeTMwY08yeG5RaFNqRTlBR2N6dHlxelpLWVhZZFdBdDcvcGdp
+  admin.passwordMtime: MjAyMS0wOS0xM1QxOToyODo0MFo=
+  server.secretkey: T28zSHZldWZFclBSc2QxanE4eXRFbERHc0IvWVdnN0lJb3BhV2RmcUZ0Zz0=
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURZekNDQWt1Z0F3SUJBZ0lSQU84V242Y1VaRzEyNHRSVTdsNytBWmd3RFFZSktvWklodmNOQVFFTEJRQXcKRWpFUU1BNEdBMVVFQ2hNSFFYSm5ieUJEUkRBZUZ3MHlNVEE1TVRNeE9USTROREJhRncweU1qQTVNVE14T1RJNApOREJhTUJJeEVEQU9CZ05WQkFvVEIwRnlaMjhnUTBRd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3CmdnRUtBb0lCQVFDNUI2Mk9CdHd3VUJzbXpsUThQeWpkSW1UZDVFd0RIRkdaNmN1ZkJNWmVDdlBKS0FkRGU3NTgKa0M1RkZGN0hZcmhNUUtveCsvd1BkazJzWHVGdGFaVC91dnd6Y2NEQ293MDF6bVAxRTVpaEE5SFFjQXU4dkRCKwpmWGRrNVZxZm5CVnFJcXp3SmFUbG5wa1RyN3FOQnczS2cvY1NXc242azJqeForSDZXaWt5TXdSdDhOZzFsdUZ1CmN2QU02ZGNJVnBjWE5ZTVh4bVkyL0lGWGxWd0IzTExmdG9POHltLy9rY3dGWmd2M0hHZmFFZGdLZVVoeEtXYzAKTmhuUjh1YXpRSVFCcGF3NkEwVnJsMVVMaHN3dVRCaE12ZEtjVUpFTi9ZeDdWRVhNZnJ5ZHVvMkdZcDRiRFNiaAo3MjVhb1NLZG8xdTdUQUZIQ2hBd1V6VlFkUEFxcnZ1QkFnTUJBQUdqZ2JNd2diQXdEZ1lEVlIwUEFRSC9CQVFECkFnV2dNQk1HQTFVZEpRUU1NQW9HQ0NzR0FRVUZCd01CTUF3R0ExVWRFd0VCL3dRQ01BQXdld1lEVlIwUkJIUXcKY29JSmJHOWpZV3hvYjNOMGdnMWhjbWR2WTJRdGMyVnlkbVZ5Z2hSaGNtZHZZMlF0YzJWeWRtVnlMbUZ5WjI5agpaSUlZWVhKbmIyTmtMWE5sY25abGNpNWhjbWR2WTJRdWMzWmpnaVpoY21kdlkyUXRjMlZ5ZG1WeUxtRnlaMjlqClpDNXpkbU11WTJ4MWMzUmxjaTVzYjJOaGJEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFGUkV6WWpZeGFQQjQKZW92cm9qOTZUV0xncWo1d2d1eVJHSG40TGp6d3Z3NzlOOEs4bGZ5UVlWZkxrbUcwQUhnSEpsVUFSMW5FWGdMVQpEc3lqOU9GUkNLcjMveDVWS2xaODdNSDkvb1VRZzBNaGxJYXYwdU9Mc3I5ZFBxL09pc0Fhc1lQRVkzSmJsM1cyCk12TlpkenVtc3Fxa0VYWXlsN0hHcTUvb0gvcUllRHRWVEQ2a3J5OEJWVDZ1MUNuUTdjRjhoVXZLS0RxUitLR08KaGdTVGNldjZ1MHRqSG9pZmJWRjBVRXRvQm1kN1NqTVY4eitBb20rYnJNRUVFMnpHZkdzTEEwc3RQRW10V0lIYworU3pxT3k5MVNKM0pBTmltNW84bmlBcG1NYk5iMjFmYTJWQzBYUkhSeUtFOEVWM3V5VW1SK0p4aDM4VEpqWllMCkFmRk15MlRSL3c9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBdVFldGpnYmNNRkFiSnM1VVBEOG8zU0prM2VSTUF4eFJtZW5MbndUR1hncnp5U2dIClEzdStmSkF1UlJSZXgySzRURUNxTWZ2OEQzWk5yRjdoYldtVS83cjhNM0hBd3FNTk5jNWo5Uk9Zb1FQUjBIQUwKdkx3d2ZuMTNaT1ZhbjV3VmFpS3M4Q1drNVo2WkU2KzZqUWNOeW9QM0VsckorcE5vOFdmaCtsb3BNak1FYmZEWQpOWmJoYm5Md0RPblhDRmFYRnpXREY4Wm1OdnlCVjVWY0FkeXkzN2FEdk1wdi81SE1CV1lMOXh4bjJoSFlDbmxJCmNTbG5ORFlaMGZMbXMwQ0VBYVdzT2dORmE1ZFZDNGJNTGt3WVRMM1NuRkNSRGYyTWUxUkZ6SDY4bmJxTmhtS2UKR3cwbTRlOXVXcUVpbmFOYnUwd0JSd29RTUZNMVVIVHdLcTc3Z1FJREFRQUJBb0lCQUJBUjlxVHJPNXlHbUpVYQpQbjZ0RGFPSEpUT1FiSG1vci8ycUxLRTNEUE9HQi81a2w1em8xbmFESDBHb3IwS3A5RS9MSGYwUllhY0dJMkRoCkxMc1AvSHpwaEpZRFB6YW9hckZOcDZqVmR1QWxNTWZsczE5RkNRRXpiSGM2NUZBUWdsdWhmMXVzS1ZJNElCdHgKbThZNzRwckFNMmxJc1ZvdUMyTk1IbmhiOUZBRHNHcGYraUtlRWFjUUFFMEFMUDB2R0tiaGxZS1lOaGx1MXA2aApxN3NKaTh6RlFuOXdkT1NIUHZ4aEtWMW5vQUZKbGw0RHdUcW91eDNEOTgxTGNoWXV0WTF4aDAxNFNlUnVmSWtNCjE0MVp1Qi9QcGFDZm1EWDlaTVpEVUtkTHUrWFM1bCtpM3pGQWJGQXJQRERGVkxuaG9iYVdlQzZ0WW5ZQUQ1RGMKYVhON2ViRUNnWUVBNmtDeFFyaC82UHBxK0lNQVQ0MmtIcm1CUUExNlZVajdBMkZtbCt0aDFEYU5ZSGdCUDBSTgoyTWhyUXZHbjBsekNOOVZUZGFDQU02dThzbGtCdWNqdjh0NStQSk10WC9LNmxJQ2IyODRnaEFYQzhmTTkxdWR3CmpoUWJydFNGT245RWNweWtHYVJoNTZITnpLNUU0RHcvem8wQ2tUanNlSm9tOTNMdWMyQk9EZHNDZ1lFQXlqVWwKZWFyR2l0ZWZTdmZQaUsxczhoSUxmeDZNY0pBOEl6bWgrZ2JGWnIzN1M3Y1NDUnZkeWJLZzc1V3hKYnJFQ2FYWgp3bFhoUURHZmVRdkdrUXdadFhoMy81NDMrTEJ2VkJVek8zbld4M3I3V2tNRGsvQ3dJVkhQQ1VUR2M5WXg2ZDJpCmdXWlFyNm1TOUJGbGkvN2dhK09lbGlTSVp3cDBxK3gxU3ZacHNOTUNnWUIybjBua01vKzdSOHdSaWkwSEcvL0cKKzBORFQwL3FqaWxtWGRWWkN2NGdPM3UrSlNia2hjOHgvdE9xTTdzN0lIUE5XRDZLS3p1Z2J0QUFOR2hXVHpXSwo5RFpTc0dqaTFJUzlISjlRWUlKQXVMWXVWWEcwT01EYmdiMCsvQ2wzSk9saGJJY0E0U2dlNXVYVFIxQmppTDc2CjlwY2RPUWt1VFVsOE52d2UrdDZyendLQmdRRElPNktWZlgvSHcwZFJGRjNsU1Y3Rnd3cXhZWTNPZFhXbnFBMTIKcWpmVnlyRkt3OGxQVGRIdFJqN0pvT0RmckxjdG1wY3RNcCt3VXJOSlNWampEeWx5SXc0cENRTUI5NnoyaFZ2TApQSlpyeUtPWU9SNFU1RlYxV1M1OFRpZDZVNVB2c3ZLVjByeDVocUVub1FaK2YvQzV4WmVudEJ1Q2RiOGM5RFVkCit5Nmowd0tCZ1FEQm5qUkExQnVRckQ5N2ZzR01mNXkvMTNuZU9MSFA5NWxDTytDUS9MNTE3YXNzVmU4UExJTm8KbnYzakNBaVFaOTVLb1c5UEF5S3JnQUd6YjliOHNVNjI3WUJYZHl6WityaFFUbWo1OWpzdzZVTUxWZnJJMWNScQpWSFd5TGt3R3E3d3pVS1hoVGI5Tk5EWW5wMnlTRUYvOFdUcFE4VnF1M2pBNUhrTmE0NDErVUE9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
+kind: Secret
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Secret","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"argocd","app.kubernetes.io/name":"argocd-secret","app.kubernetes.io/part-of":"argocd"},"name":"argocd-secret","namespace":"argocd"},"type":"Opaque"}
+  labels:
+    app.kubernetes.io/instance: argocd
+    app.kubernetes.io/name: argocd-secret
+    app.kubernetes.io/part-of: argocd
+  name: argocd-secret
+type: Opaque
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+status: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Application","metadata":{"annotations":{},"name":"argocd","namespace":"argocd"},"spec":{"destination":{"namespace":"argocd","server":"https://kubernetes.default.svc"},"project":"default","source":{"path":"ch3/kustomize-installation","repoURL":"https://github.com/PacktPublishing/ArgoCD-in-Practice.git","targetRevision":"main"},"syncPolicy":{"automated":{}}}}
+  name: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: ch3/kustomize-installation
+    repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2021-09-13T19:31:14Z"
+    deployedAt: "2021-09-13T19:31:16Z"
+    id: 0
+    revision: 38f5370f7f0309fefaa53b75f65d373f824043be
+    source:
+      path: ch3/kustomize-installation
+      repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
+      targetRevision: main
+  operationState:
+    finishedAt: "2021-09-13T19:31:16Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 38f5370f7f0309fefaa53b75f65d373f824043be
+    phase: Succeeded
+    startedAt: "2021-09-13T19:31:14Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Namespace
+        message: namespace/argocd configured
+        name: argocd
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: NetworkPolicy
+        message: networkpolicy.networking.k8s.io/argocd-redis-ha-server-network-policy
+          configured
+        name: argocd-redis-ha-server-network-policy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: NetworkPolicy
+        message: networkpolicy.networking.k8s.io/argocd-application-controller-network-policy
+          configured
+        name: argocd-application-controller-network-policy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: NetworkPolicy
+        message: networkpolicy.networking.k8s.io/argocd-server-network-policy configured
+        name: argocd-server-network-policy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: NetworkPolicy
+        message: networkpolicy.networking.k8s.io/argocd-dex-server-network-policy
+          configured
+        name: argocd-dex-server-network-policy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: NetworkPolicy
+        message: networkpolicy.networking.k8s.io/argocd-redis-ha-proxy-network-policy
+          configured
+        name: argocd-redis-ha-proxy-network-policy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: NetworkPolicy
+        message: networkpolicy.networking.k8s.io/argocd-repo-server-network-policy
+          configured
+        name: argocd-repo-server-network-policy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/argocd-dex-server configured
+        name: argocd-dex-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/argocd-redis-ha configured
+        name: argocd-redis-ha
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/argocd-server configured
+        name: argocd-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/argocd-application-controller configured
+        name: argocd-application-controller
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/argocd-redis-ha-haproxy configured
+        name: argocd-redis-ha-haproxy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/argocd-secret configured
+        name: argocd-secret
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/argocd-cm configured
+        name: argocd-cm
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/argocd-cmd-params-cm configured
+        name: argocd-cmd-params-cm
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/argocd-redis-ha-configmap configured
+        name: argocd-redis-ha-configmap
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/argocd-tls-certs-cm configured
+        name: argocd-tls-certs-cm
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/argocd-ssh-known-hosts-cm configured
+        name: argocd-ssh-known-hosts-cm
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/argocd-redis-ha-health-configmap configured
+        name: argocd-redis-ha-health-configmap
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/argocd-gpg-keys-cm configured
+        name: argocd-gpg-keys-cm
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/argocd-rbac-cm configured
+        name: argocd-rbac-cm
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apiextensions.k8s.io
+        hookPhase: Running
+        kind: CustomResourceDefinition
+        message: customresourcedefinition.apiextensions.k8s.io/appprojects.argoproj.io
+          unchanged
+        name: appprojects.argoproj.io
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apiextensions.k8s.io
+        hookPhase: Running
+        kind: CustomResourceDefinition
+        message: customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io
+          unchanged
+        name: applications.argoproj.io
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/argocd-server reconciled. reconciliation
+          required update. clusterrole.rbac.authorization.k8s.io/argocd-server configured
+        name: argocd-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/argocd-application-controller
+          reconciled. reconciliation required update. clusterrole.rbac.authorization.k8s.io/argocd-application-controller
+          configured
+        name: argocd-application-controller
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/argocd-application-controller
+          reconciled. reconciliation required update. clusterrolebinding.rbac.authorization.k8s.io/argocd-application-controller
+          configured
+        name: argocd-application-controller
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/argocd-server reconciled.
+          reconciliation required update. clusterrolebinding.rbac.authorization.k8s.io/argocd-server
+          configured
+        name: argocd-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/argocd-redis-ha-haproxy reconciled.
+          reconciliation required update. role.rbac.authorization.k8s.io/argocd-redis-ha-haproxy
+          configured
+        name: argocd-redis-ha-haproxy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/argocd-application-controller reconciled.
+          reconciliation required update. role.rbac.authorization.k8s.io/argocd-application-controller
+          configured
+        name: argocd-application-controller
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/argocd-redis-ha reconciled. reconciliation
+          required update. role.rbac.authorization.k8s.io/argocd-redis-ha configured
+        name: argocd-redis-ha
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/argocd-server reconciled. reconciliation
+          required update. role.rbac.authorization.k8s.io/argocd-server configured
+        name: argocd-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/argocd-dex-server reconciled. reconciliation
+          required update. role.rbac.authorization.k8s.io/argocd-dex-server configured
+        name: argocd-dex-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/argocd-dex-server reconciled.
+          reconciliation required update. rolebinding.rbac.authorization.k8s.io/argocd-dex-server
+          configured
+        name: argocd-dex-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/argocd-redis-ha reconciled.
+          reconciliation required update. rolebinding.rbac.authorization.k8s.io/argocd-redis-ha
+          configured
+        name: argocd-redis-ha
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/argocd-server reconciled. reconciliation
+          required update. rolebinding.rbac.authorization.k8s.io/argocd-server configured
+        name: argocd-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/argocd-application-controller
+          reconciled. reconciliation required update. rolebinding.rbac.authorization.k8s.io/argocd-application-controller
+          configured
+        name: argocd-application-controller
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/argocd-redis-ha-haproxy reconciled.
+          reconciliation required update. rolebinding.rbac.authorization.k8s.io/argocd-redis-ha-haproxy
+          configured
+        name: argocd-redis-ha-haproxy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-repo-server configured
+        name: argocd-repo-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-redis-ha-announce-2 configured
+        name: argocd-redis-ha-announce-2
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-redis-ha-haproxy configured
+        name: argocd-redis-ha-haproxy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-redis-ha-announce-1 configured
+        name: argocd-redis-ha-announce-1
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-dex-server configured
+        name: argocd-dex-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-server-metrics configured
+        name: argocd-server-metrics
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-server configured
+        name: argocd-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-redis-ha-announce-0 configured
+        name: argocd-redis-ha-announce-0
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-redis-ha configured
+        name: argocd-redis-ha
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/argocd-metrics configured
+        name: argocd-metrics
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/argocd-server configured
+        name: argocd-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/argocd-redis-ha-haproxy configured
+        name: argocd-redis-ha-haproxy
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/argocd-dex-server configured
+        name: argocd-dex-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/argocd-repo-server configured
+        name: argocd-repo-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: StatefulSet
+        message: statefulset.apps/argocd-application-controller configured
+        name: argocd-application-controller
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: StatefulSet
+        message: statefulset.apps/argocd-redis-ha-server configured
+        name: argocd-redis-ha-server
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 38f5370f7f0309fefaa53b75f65d373f824043be
+      source:
+        path: ch3/kustomize-installation
+        repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
+        targetRevision: main
+  reconciledAt: "2021-09-15T18:14:04Z"
+  resources:
+  - kind: ConfigMap
+    name: argocd-cm
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: argocd-cmd-params-cm
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: argocd-gpg-keys-cm
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: argocd-rbac-cm
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: argocd-redis-ha-configmap
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: argocd-redis-ha-health-configmap
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: argocd-ssh-known-hosts-cm
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: argocd-tls-certs-cm
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: Namespace
+    name: argocd
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: argocd-secret
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-dex-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-metrics
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-redis-ha
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-redis-ha-announce-0
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-redis-ha-announce-1
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-redis-ha-announce-2
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-redis-ha-haproxy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-repo-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: argocd-server-metrics
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: argocd-application-controller
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: argocd-dex-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: argocd-redis-ha
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: argocd-redis-ha-haproxy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: argocd-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: applications.argoproj.io
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: appprojects.argoproj.io
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: argocd-dex-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: argocd-redis-ha-haproxy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: argocd-repo-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: argocd-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      message: 'partitioned roll out complete: 3 new pods have been updated...'
+      status: Healthy
+    kind: StatefulSet
+    name: argocd-application-controller
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      message: statefulset rolling update complete 3 pods at revision argocd-redis-ha-server-85f496c479...
+      status: Healthy
+    kind: StatefulSet
+    name: argocd-redis-ha-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: NetworkPolicy
+    name: argocd-application-controller-network-policy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: NetworkPolicy
+    name: argocd-dex-server-network-policy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: NetworkPolicy
+    name: argocd-redis-ha-proxy-network-policy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: NetworkPolicy
+    name: argocd-redis-ha-server-network-policy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: NetworkPolicy
+    name: argocd-repo-server-network-policy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: NetworkPolicy
+    name: argocd-server-network-policy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: argocd-application-controller
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: argocd-server
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: argocd-application-controller
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: argocd-server
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: argocd-application-controller
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: argocd-dex-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: argocd-redis-ha
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: argocd-redis-ha-haproxy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: argocd-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: argocd-application-controller
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: argocd-dex-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: argocd-redis-ha
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: argocd-redis-ha-haproxy
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: argocd-server
+    namespace: argocd
+    status: Synced
+    version: v1
+  sourceType: Kustomize
+  summary:
+    images:
+    - ghcr.io/dexidp/dex:v2.27.0
+    - haproxy:2.0.22-alpine
+    - quay.io/argoproj/argocd:v2.1.1
+    - redis:6.2.4-alpine
+  sync:
+    comparedTo:
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
+      source:
+        path: ch3/kustomize-installation
+        repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
+        targetRevision: main
+    revision: 38f5370f7f0309fefaa53b75f65d373f824043be
+    status: Synced
+---
