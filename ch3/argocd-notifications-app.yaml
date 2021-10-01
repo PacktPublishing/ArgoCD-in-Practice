@@ -1,16 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  annotations:
-    notifications.argoproj.io/subscribe.on-sync.gitlab: ""
-  name: argocd
+  name: argocd-notifications
 spec:
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: ch3/kustomize-installation
+    path: ch3/notifications
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: main
   syncPolicy:
