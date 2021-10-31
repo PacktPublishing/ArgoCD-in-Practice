@@ -1,0 +1,13 @@
+{
+    "schemaName": "ArgoCDSSO",
+    "displayName": "ArgoCD_SSO_Role",
+    "fields": [
+        {
+            "fieldType": "STRING",
+            "fieldName": "ArgoCDRole",
+            "displayName": "ArgoCD_Role",
+            "multiValued": true,
+            "readAccessType": "ADMINS_AND_SELF"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+data:
+
+  policy.csv: |
+
+    g, role:developer, role:readonly
+    p, role:developer, applications, sync, */*, allow
+    
+    g, role:sre, role:developer
+
+    p, role:sre, applications, create, */*, allow
+    p, role:sre, applications, update, */*, allow
+    p, role:sre, applications, override, */*, allow
+    p, role:sre, applications, action/*, */*, allow
+    p, role:sre, projects, create, *, allow
+    p, role:sre, projects, update, *, allow
+    p, role:sre, repositories, create, *, allow
+    p, role:sre, repositories, update, *, allow
+
+    g, Sre, role:sre
+    g, Developer, role:developer
+    g, Onboarding, role:readonly

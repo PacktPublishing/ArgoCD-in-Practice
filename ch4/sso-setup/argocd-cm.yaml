@@ -1,0 +1,21 @@
+apiVersion: v1 
+kind: ConfigMap 
+metadata: 
+  name: argocd-cm 
+data:
+  admin.enabled: "false"
+  url: https://argocd.mycompany.com
+  dex.config: |
+    connectors:
+      - type: saml
+          id: argocd-mycompany-saml-id
+          name: google
+          config:
+            ssoURL: https://accounts.google.com/o/saml2/idp?idpid=<id-provided-by-google>
+            caData: |
+              BASE64-ENCODED-CERTIFICATE-DATA
+            entityIssuer: argocd-mycompany-saml-id
+            redirectURI: https://argocd.mycompany.com/api/dex/callback
+            usernameAttr: name
+            emailAttr: email
+            groupsAttr: role

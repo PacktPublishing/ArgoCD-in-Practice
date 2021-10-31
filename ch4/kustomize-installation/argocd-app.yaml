@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1 
+kind: Application 
+metadata:
+  name: argocd 
+spec:
+  destination: 
+    namespace: argocd 
+    server: https://kubernetes.default.svc 
+  project: argocd 
+  source: 
+    path: ch4/kustomize-installation 
+    repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git 
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: false
