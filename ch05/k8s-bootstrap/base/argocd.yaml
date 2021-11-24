@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: HEAD
-    path: applications/argocd-app
+    path: ch05/applications/argocd
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc

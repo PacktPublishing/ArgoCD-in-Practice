@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cm
-data:
-  repositories: |
-    - url: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
