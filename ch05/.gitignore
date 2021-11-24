@@ -1,0 +1,7 @@
+# Terraform
+*.terraform*
+*tfstate*
+plan.out
+
+# Kubeonfig
+kubeconfig*
