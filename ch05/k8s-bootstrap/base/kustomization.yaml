@@ -6,3 +6,4 @@ bases:
 resources:
   - namespace.yaml
   - argocd.yaml
+  - master-utilities.yaml

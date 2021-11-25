@@ -1,0 +1,3 @@
+apiVersion: v2
+name: master-utilities
+description: The master Argo Application for the Cluster utilities
