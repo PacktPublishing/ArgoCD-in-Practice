@@ -1,0 +1,4 @@
+apiVersion: v2
+name: argocd-ui
+description: The ingress gateway to access Argo CD UI through Operator
+version: 0.0.1

@@ -6,3 +6,19 @@ metadata:
   labels:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
+data:
+  resource.customizations: |
+    install.istio.io/IstioOperator:
+      health.lua: |
+        hs = {}
+        if obj.status ~= nil then
+          if obj.status.status == "HEALTHY" then
+            hs.status = "Healthy"
+            hs.message = "Istio-Operator Ready"
+            return hs
+          end
+        end
+
+        hs.status = "Progressing"
+        hs.message = "Waiting for Istio-Operator"
+        return hs
