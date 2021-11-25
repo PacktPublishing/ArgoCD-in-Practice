@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/istio/istio.git
     targetRevision: "1.0.0"
-    path: operator/manifests/charts/istio-operator
+    path: manifests/charts/istio-operator
     helm:
       parameters:
         - name: "tag"
