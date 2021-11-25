@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: HEAD
-    path: applications/istio-control-plane
+    path: ch05/applications/istio-control-plane
 
   destination:
     namespace: istio-system
