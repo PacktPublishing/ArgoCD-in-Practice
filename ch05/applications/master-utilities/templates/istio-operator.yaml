@@ -15,6 +15,8 @@ spec:
     path: manifests/charts/istio-operator
     helm:
       parameters:
+        - name: "hub"
+          value: "docker.io/istio"
         - name: "tag"
           value: "1.12.0"
 
