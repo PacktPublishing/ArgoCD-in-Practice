@@ -10,10 +10,14 @@ spec:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: HEAD
     path: ch05/applications/argocd
+
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
+
   syncPolicy:
     automated:
       prune: true
+    syncOptions:
+      - CreateNamespace=true
     validate: true

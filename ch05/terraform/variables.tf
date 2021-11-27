@@ -27,3 +27,14 @@ variable "cluster_name" {
   description = "The name of EKS k8s cluster"
   type        = string
 }
+
+variable "domain" {
+  default     = "packtargocdbook.link"
+  description = "The domain name for Route53. Change it to use your own"
+}
+
+variable "zone_id" {
+  default     = "Z06553931QSUA8NK1ZT1N"
+  description = "The ID of Route53 hosted zone"
+}
+

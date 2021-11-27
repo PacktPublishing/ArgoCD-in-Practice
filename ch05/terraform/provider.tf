@@ -9,5 +9,5 @@ provider "kubernetes" {
 }
 
 provider "kustomization" {
-  kubeconfig_path = "./${module.eks.kubeconfig_filename}"
+  kubeconfig_raw = module.eks.kubeconfig
 }

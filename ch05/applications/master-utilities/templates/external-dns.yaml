@@ -13,6 +13,15 @@ spec:
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: "2.20.4"
     chart: external-dns
+    helm:
+      values: |
+        sources:
+        - istio-gateway
+        podAnnotations:
+          iam.amazonaws.com/role: {{ .Values.externalDNS.iamRole }}
+        domainFilters:
+          - {{ .Values.externalDNS.domain }}
+        txtOwnerId: {{ .Values.externalDNS.txtOwnerId }}
 
   destination:
     namespace: kube-system

@@ -10,11 +10,17 @@ spec:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: HEAD
     path: ch05/applications/master-utilities
+
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
+    helm:
+      values: |
+        externalDNS:
+          iamRole: {{ iam_role }}
+          domain: {{ domain }}
+          txtOwnerId: {{ txt_owner_id }}
 
   syncPolicy:
     automated:
       prune: true
-    validate: true
