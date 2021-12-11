@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-cd
+  name: argo-rollouts
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -9,10 +9,10 @@ spec:
   source:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: feat/ch06
-    path: ch05/applications/argocd
+    path: ch05/applications/argo-rollouts
 
   destination:
-    namespace: argocd
+    namespace: argo-rollouts
     server: https://kubernetes.default.svc
 
   syncPolicy:

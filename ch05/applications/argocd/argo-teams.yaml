@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: team
+spec:
+  destinations:
+  - namespace: team-*
+    server: '*'
+  sourceRepos:
+  - https://github.com/PacktPublishing/ArgoCD-in-Practice.git
+  roles:
+  - name: team-admin
+    policies:
+    - p, proj:team:team-admin, applications, *, team/*, allow
+  - name: ci-role
+    description: Create and Sync apps
+    policies:
+    - p, proj:team:ci-role, applications, sync, team/*, allow
+    - p, proj:team:ci-role, applications, create, team/*, allow

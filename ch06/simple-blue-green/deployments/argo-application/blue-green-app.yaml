@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-cd
+  name: blue-green
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: team
   source:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: feat/ch06
-    path: ch05/applications/argocd
+    path: ch06/simple-blue-green/deployments/argo
 
   destination:
-    namespace: argocd
+    namespace: team-blue-green
     server: https://kubernetes.default.svc
 
   syncPolicy:
