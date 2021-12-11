@@ -4,7 +4,7 @@ metadata:
   namespace: istio-system
   name: istio-control-plane
 spec:
-  profile: packt
+  profile: default
   addonComponents:
     prometheus:
       enabled: false
