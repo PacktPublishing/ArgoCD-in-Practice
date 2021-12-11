@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: team
+  namespace: argocd
+spec:
+  destinations:
+  - namespace: team-*
+    server: '*'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
+  sourceRepos:
+  - https://github.com/PacktPublishing/ArgoCD-in-Practice.git
+  - https://github.com/spirosoik/argocd-rollouts-cicd.git
+  roles:
+  - name: team-admin
+    policies:
+    - p, proj:team:team-admin, applications, *, team/*, allow
+  - name: ci-role
+    description: Create and Sync apps
+    policies:
+    - p, proj:team:ci-role, applications, sync, team/*, allow
+    - p, proj:team:ci-role, applications, get,  team/*, allow
+    - p, proj:team:ci-role, applications, create, team/*, allow
+    - p, proj:team:ci-role, applications, update, team/*, allow
+    - p, proj:team:ci-role, applications, delete, team/*, allow

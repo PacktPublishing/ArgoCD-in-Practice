@@ -1,22 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+  name: blue-green
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: team
   source:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: HEAD
-    path: ch05/applications/istio-control-plane
+    path: ch06/simple-blue-green/deployments/argo
 
   destination:
-    namespace: istio-system
-    server: {{ .Values.spec.destination.server }}
+    namespace: team-blue-green
+    server: https://kubernetes.default.svc
 
   syncPolicy:
     automated:

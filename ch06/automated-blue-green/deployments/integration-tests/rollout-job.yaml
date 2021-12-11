@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: rollout-promote
+  namespace: team-demo
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: promote-green
+        image:  quay.io/argoproj/kubectl-argo-rollouts:v1.1.1
+        command: ["/bin/sh", "-c"]
+        args:
+          - kubectl-argo-rollouts promote app -n team-demo;
+      restartPolicy: Never
+  backoffLimit: 2

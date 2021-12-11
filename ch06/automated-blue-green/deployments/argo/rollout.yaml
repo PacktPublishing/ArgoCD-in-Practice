@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: app
+  namespace: team-demo
+spec:
+  replicas: 2
+  strategy:
+    blueGreen:
+      activeService: rollout-bluegreen-active
+      previewService: rollout-bluegreen-preview
+      autoPromotionEnabled: false
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: spirosoik/ch06:v2.5.11
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP

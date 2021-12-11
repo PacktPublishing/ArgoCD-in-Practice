@@ -11,17 +11,21 @@ spec:
   project: default
   source:
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: "2.20.4"
+    targetRevision: "6.0.1"
     chart: external-dns
     helm:
       values: |
         sources:
+        - ingress
+        - service
         - istio-gateway
-        podAnnotations:
-          iam.amazonaws.com/role: {{ .Values.externalDNS.iamRole }}
+        - istio-virtualservice
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: {{ .Values.externalDNS.iamRole }}
         domainFilters:
           - {{ .Values.externalDNS.domain }}
-        txtOwnerId: {{ .Values.externalDNS.txtOwnerId }}
+        txtOwnerId: {{ .Values.externalDNS.txtOwnerID }}
 
   destination:
     namespace: kube-system

@@ -5,5 +5,5 @@ bases:
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.1.7/manifests/install.yaml
 resources:
   - namespace.yaml
-  - argocd.yaml
-  - master-utilities.yaml
+  - argo-applicationset.yaml
+  - bootstrap-applicationset.yaml

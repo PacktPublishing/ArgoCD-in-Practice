@@ -1,0 +1,81 @@
+name: tag
+on:
+  push:
+    tags:        
+      - 'v*'
+
+jobs:
+  build: 
+    name: Build & Push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download Argo CD CLI
+        run: |
+          make download-argo-cli
+
+      - name: Install yq
+        uses: mikefarah/yq@master
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build
+        run: |
+          TAG="${GITHUB_REF##*/}" make push-image
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: ["build"]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: main
+
+    - name: Download Argo CD CLI
+      run: |
+        make download-argo-cli
+
+    - name: Update Docker Tag
+      run: |
+        TAG="${GITHUB_REF##*/}" BUILD_NUMBER=${GITHUB_RUN_NUMBER} make update-docker-tag
+
+    - name: Deploy Argo App
+      run: |
+        make deploy-argo-app
+      env:
+        PROJ: team
+        APP: blue-green
+        JWT: ${{ secrets.ARGOCD_TOKEN }}
+        ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
+        ARGOCD_STATE: "--suspended"
+        ARGOCD_PATH: "deployments/argo"
+
+    - name: Integration Tests and Promote
+      run: |
+        sed -i 's/APP_VERSION/$TAG/g' deployments/integration-tests/integration-job.yaml
+        TAG="${GITHUB_REF##*/}" make create-argo-app deploy-argo-app
+      env:
+        PROJ: team
+        APP: integration-tests-blue-green
+        JWT: ${{ secrets.ARGOCD_TOKEN }}
+        ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
+        ARGOCD_STATE: "--health"
+        ARGOCD_PATH: "deployments/integration-tests"
+
+    - name: Cleanup tests
+      run: |
+        make clean-tests-on-success
+      env:
+        PROJ: team
+        APP: integration-tests-blue-green
+        JWT: ${{ secrets.ARGOCD_TOKEN }}
+        ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
+
