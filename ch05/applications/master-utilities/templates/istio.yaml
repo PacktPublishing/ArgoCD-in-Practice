@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
-    targetRevision: HEAD
+    targetRevision: feat/ch06
     path: ch05/applications/istio-control-plane
 
   destination:
