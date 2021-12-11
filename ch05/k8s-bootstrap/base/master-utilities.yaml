@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
-    targetRevision: HEAD
+    targetRevision: feat/ch06
     path: ch05/applications/master-utilities
 
   destination:
@@ -17,9 +17,9 @@ spec:
     helm:
       values: |
         externalDNS:
-          iamRole: {{ iam_role }}
-          domain: {{ domain }}
-          txtOwnerId: {{ txt_owner_id }}
+          iamRole: ${iam_role}
+          domain: ${domain}
+          txtOwnerId: ${txtOwnerId}
 
   syncPolicy:
     automated:
