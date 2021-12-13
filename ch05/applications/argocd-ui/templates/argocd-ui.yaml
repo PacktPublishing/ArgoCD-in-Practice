@@ -26,8 +26,11 @@ spec:
   gateways:
     - argocd-gateway
   http:
-    - route:
-        - destination:
-            host: argocd-server.argocd.svc.cluster.local
-            port:
-              number: 80
+  - match: 
+    - uri:   
+        prefix: /
+    route:
+      - destination:
+          host: argocd-server.argocd.svc.cluster.local
+          port:
+            number: 80
