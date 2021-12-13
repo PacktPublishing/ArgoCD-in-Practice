@@ -18,13 +18,13 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: argocd-server
+  name: argocd-virtual-service
   namespace: argocd
-spec:
+spec: 
   hosts:
-  - ui.packtargocdbook.link
+  - "ui.packtargocdbook.link"
   gateways:
-    - argocd-gateway
+  - argocd-gateway
   http:
   - match: 
     - uri:   
