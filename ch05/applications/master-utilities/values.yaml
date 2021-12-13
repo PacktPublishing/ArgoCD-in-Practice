@@ -4,7 +4,7 @@ spec:
 
 externalDNS:
   # the role to use in pods to assume in AWS
-  iamRole: 
+  iamRole:
   # the domain to filter out
   domain:
   # the ID of the Route53 hosted zone

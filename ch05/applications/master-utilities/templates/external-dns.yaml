@@ -18,10 +18,10 @@ spec:
         sources:
         - istio-gateway
         podAnnotations:
-          iam\\.amazonaws\\.com/role: {{ .Values.externalDNS.iamRole }}
+          iam.amazonaws.com/role: {{ .Values.externalDNS.iamRole }}
         domainFilters:
           - {{ .Values.externalDNS.domain }}
-        txtOwnerId: {{ .Values.externalDNS.txtOwnerId }}
+        txtOwnerId: {{ .Values.externalDNS.txtOwnerID }}
 
   destination:
     namespace: kube-system
