@@ -15,11 +15,13 @@ spec:
     namespace: argocd
     server: https://kubernetes.default.svc
     helm:
-      values: |
-        externalDNS:
-          iamRole: arn:aws:iam::593113792344:role/external-dns-role
-          domain: packtargocdbook.link
-          txtOwnerID: Z06553931QSUA8NK1ZT1N
+      parameters:
+        - name: "externalDNS.iamRole"
+          value: "arn:aws:iam::593113792344:role/external-dns-role"
+        - name: "externalDNS.domain"
+          value: "packtargocdbook.link"
+        - name: "externalDNS.txtOwnerID"
+          value: "Z06553931QSUA8NK1ZT1N"
 
   syncPolicy:
     automated:
