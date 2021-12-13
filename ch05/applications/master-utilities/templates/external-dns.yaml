@@ -16,7 +16,10 @@ spec:
     helm:
       values: |
         sources:
+        - ingress
+        - service
         - istio-gateway
+        - istio-virtualservice
         serviceAccount:
           annotations:
             eks.amazonaws.com/role-arn: {{ .Values.externalDNS.iamRole }}
