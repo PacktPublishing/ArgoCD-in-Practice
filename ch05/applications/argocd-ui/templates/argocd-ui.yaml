@@ -30,6 +30,17 @@ spec:
         prefix: /
     route:
     - destination:
-        host: argocd-server
+        host: argocd-server.argocd.svc.cluster.local
         port:
           number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: argocd-server-dtrl
+  namespace: argocd
+spec:
+  host: argocd-server.argocd.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: DISABLE
