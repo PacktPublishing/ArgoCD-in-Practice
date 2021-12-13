@@ -17,11 +17,12 @@ spec:
     helm:
       values: |
         externalDNS:
-          iamRole: ${iam_role}
-          domain: ${domain}
-          txtOwnerId: ${txtOwnerId}
+          iamRole: arn:aws:iam::593113792344:role/external-dns-role
+          domain: packtargocdbook.link
+          txtOwnerID: Z06553931QSUA8NK1ZT1N
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
