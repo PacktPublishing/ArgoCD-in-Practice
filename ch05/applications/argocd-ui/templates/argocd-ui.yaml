@@ -3,6 +3,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: argocd-gateway
+  namespace: argocd
 spec:
   selector:
     istio: ingressgateway
@@ -18,6 +19,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: argocd-server
+  namespace: argocd
 spec:
   hosts:
   - ui.packtargocdbook.link
