@@ -30,7 +30,7 @@ spec:
     - uri:   
         prefix: /
     route:
-      - destination:
-          host: argocd-server.argocd.svc.cluster.local
-          port:
-            number: 80
+    - destination:
+        host: argocd-server
+        port:
+          number: 80
