@@ -17,8 +17,9 @@ spec:
       values: |
         sources:
         - istio-gateway
-        podAnnotations:
-          eks.amazonaws.com/role-arn: {{ .Values.externalDNS.iamRole }}
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: {{ .Values.externalDNS.iamRole }}
         domainFilters:
           - {{ .Values.externalDNS.domain }}
         txtOwnerId: {{ .Values.externalDNS.txtOwnerID }}
