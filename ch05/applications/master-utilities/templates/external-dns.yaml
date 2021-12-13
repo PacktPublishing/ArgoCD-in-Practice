@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: "2.20.4"
+    targetRevision: "6.0.1"
     chart: external-dns
     helm:
       values: |
