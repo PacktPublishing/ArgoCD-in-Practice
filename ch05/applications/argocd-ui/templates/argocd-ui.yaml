@@ -34,10 +34,11 @@ spec:
   - "ui.packtargocdbook.link"
   gateways:
   - argocd-gateway
-  http:
-  - match: 
-    - uri:   
-        prefix: /
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - argocd-server.argocd.svc.cluster.local
     route:
     - destination:
         host: argocd-server.argocd.svc.cluster.local
