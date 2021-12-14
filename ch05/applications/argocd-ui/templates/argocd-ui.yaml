@@ -11,6 +11,14 @@ spec:
       number: 80
       name: http
       protocol: HTTP
+    tls:
+      httpsRedirect: true
+    hosts:
+    - "ui.packtargocdbook.link"
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
     hosts:
     - "ui.packtargocdbook.link"
 ---
