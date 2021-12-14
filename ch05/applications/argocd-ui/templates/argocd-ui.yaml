@@ -3,7 +3,7 @@ kind: Gateway
 metadata:
   name: argocd-gateway
   namespace: argocd
-spec: 
+spec:
   selector:
     istio: ingressgateway
   servers:
@@ -29,18 +29,18 @@ kind: VirtualService
 metadata:
   name: argocd-virtual-service
   namespace: argocd
-spec: 
+spec:
   hosts:
   - "ui.packtargocdbook.link"
   gateways:
   - argocd-gateway
   tls:
-    - match:
-      - port: 443
-        sniHosts:
-        - "ui.packtargocdbook.link"
-      route:
-      - destination:
-          host: argocd-server.argocd.svc.cluster.local
-          port:
-            number: 443
+  - match:
+    - port: 443
+      sniHosts:
+      - "ui.packtargocdbook.link"
+    route:
+    - destination:
+        host: argocd-server.argocd.svc.cluster.local
+        port:
+          number: 443
