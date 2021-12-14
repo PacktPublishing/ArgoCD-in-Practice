@@ -6,6 +6,16 @@ spec:
   destinations:
   - namespace: team-*
     server: '*'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
   sourceRepos:
   - https://github.com/PacktPublishing/ArgoCD-in-Practice.git
   - https://github.com/spirosoik/argocd-rollouts-cicd.git
