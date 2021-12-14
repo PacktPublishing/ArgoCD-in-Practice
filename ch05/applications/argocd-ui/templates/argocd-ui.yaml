@@ -38,7 +38,7 @@ spec:
   - match:
     - port: 443
       sniHosts:
-      - argocd-server.argocd.svc.cluster.local
+      - ui.packtargocdbook.link
     route:
     - destination:
         host: argocd-server.argocd.svc.cluster.local
