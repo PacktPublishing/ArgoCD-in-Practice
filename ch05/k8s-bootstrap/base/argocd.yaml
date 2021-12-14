@@ -14,11 +14,6 @@ spec:
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
-    helm:
-      values: |
-        server:
-          extraArgs:
-            - --insecure
 
   syncPolicy:
     automated:
