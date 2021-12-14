@@ -37,8 +37,6 @@ spec:
   tls:
   - match:
     - port: 443
-      sniHosts:
-      - "ui.packtargocdbook.link"
     route:
     - destination:
         host: argocd-server.argocd.svc.cluster.local
