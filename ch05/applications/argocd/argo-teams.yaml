@@ -17,5 +17,6 @@ spec:
     description: Create and Sync apps
     policies:
     - p, proj:team:ci-role, applications, sync, team/*, allow
+    - p, proj:team:ci-role, applications, get,  team/*, allow
     - p, proj:team:ci-role, applications, create, team/*, allow
     - p, proj:team:ci-role, applications, update, team/*, allow
