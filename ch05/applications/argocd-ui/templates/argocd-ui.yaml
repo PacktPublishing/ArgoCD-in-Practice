@@ -32,15 +32,24 @@ spec:
   - "ui.packtargocdbook.link"
   gateways:
   - argocd-gateway
-  https:
-  - match: 
-    - uri:   
-        prefix: /
-    route:
-    - destination:
-        host: argocd-server.argocd.svc.cluster.local
-        port:
-          number: 80
-      trafficPolicy:
-        tls:
-          mode: DISABLE
+  tls:
+    - match:
+      - port: 443
+        sniHosts:
+        - "ui.packtargocdbook.link"
+      route:
+      - destination:
+          host: argocd-server.argocd.svc.cluster.local
+          port:
+            number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: argocd-server-dtrl
+  namespace: argocd
+spec:
+  host: argocd-server.argocd.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: DISABLE
