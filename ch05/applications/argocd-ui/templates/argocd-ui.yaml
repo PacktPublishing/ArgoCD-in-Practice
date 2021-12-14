@@ -13,14 +13,6 @@ spec:
       protocol: HTTP
     hosts:
     - "ui.packtargocdbook.link"
-  - port:
-      number: 443
-      name: https
-      protocol: HTTPS
-    tls:
-      mode: PASSTHROUGH
-    hosts:
-    - "ui.packtargocdbook.link"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
