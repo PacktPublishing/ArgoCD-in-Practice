@@ -10,20 +10,18 @@ spec:
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: feat/ch06
     path: ch05/applications/master-utilities
+    helm:
+      values: |
+        externalDNS:
+          iamRole: arn:aws:iam::593113792344:role/external-dns-role
+          domain: packtargocdbook.link
+          txtOwnerID: Z06553931QSUA8NK1ZT1N
 
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
-    helm:
-      parameters:
-        - name: "externalDNS.iamRole"
-          value: "arn:aws:iam::593113792344:role/external-dns-role"
-        - name: "externalDNS.domain"
-          value: "packtargocdbook.link"
-        - name: "externalDNS.txtOwnerID"
-          value: "Z06553931QSUA8NK1ZT1N"
 
-  syncPolicy:
+  syncPolicy: 
     automated:
       prune: true
       selfHeal: true
