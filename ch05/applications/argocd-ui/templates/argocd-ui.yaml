@@ -29,17 +29,28 @@ kind: VirtualService
 metadata:
   name: argocd-virtual-service
   namespace: argocd
-spec:
+spec: 
   hosts:
   - "ui.packtargocdbook.link"
   gateways:
   - argocd-gateway
-  tls:
-  - match:
+  http:
+  - match: 
     - uri:   
         prefix: /
     route:
     - destination:
         host: argocd-server.argocd.svc.cluster.local
         port:
-          number: 443
+          number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: argocd-server-dtrl
+  namespace: argocd
+spec:
+  host: argocd-server.argocd.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: DISABLE
