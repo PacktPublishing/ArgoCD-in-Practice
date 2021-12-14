@@ -11,6 +11,16 @@ spec:
       number: 80
       name: http
       protocol: HTTP
+    tls:
+      httpsRedirect: true
+    hosts:
+    - "ui.packtargocdbook.link"
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: PASSTHROUGH
     hosts:
     - "ui.packtargocdbook.link"
 ---
@@ -32,7 +42,7 @@ spec:
     - destination:
         host: argocd-server.argocd.svc.cluster.local
         port:
-          number: 80
+          number: 443
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
