@@ -22,7 +22,7 @@ spec:
     tls:
       mode: PASSTHROUGH
     hosts:
-    - "argocd-dev.example.com"
+    - "ui.packtargocdbook.link"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -36,8 +36,9 @@ spec:
   - argocd-gateway
   tls:
   - match:
-    - uri:   
-        prefix: /
+    - port: 443
+      sniHosts:
+      - "ui.packtargocdbook.link"
     route:
     - destination:
         host: argocd-server.argocd.svc.cluster.local
