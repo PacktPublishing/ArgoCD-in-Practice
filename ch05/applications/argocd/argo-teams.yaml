@@ -17,3 +17,4 @@ spec:
     policies:
     - p, proj:team:ci-role, applications, sync, team/*, allow
     - p, proj:team:ci-role, applications, create, team/*, allow
+    - p, proj:team:ci-role, applications, update, team/*, allow
