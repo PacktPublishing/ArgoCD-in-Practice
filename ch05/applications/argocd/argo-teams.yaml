@@ -20,6 +20,3 @@ spec:
     - p, proj:team:ci-role, applications, get,  team/*, allow
     - p, proj:team:ci-role, applications, create, team/*, allow
     - p, proj:team:ci-role, applications, update, team/*, allow
-    - p, proj:team:ci-role, namespace, get,  team/*, allow
-    - p, proj:team:ci-role, namespace, create, team/*, allow
-    - p, proj:team:ci-role, namespace, update, team/*, allow
