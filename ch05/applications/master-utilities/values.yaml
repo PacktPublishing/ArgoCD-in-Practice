@@ -3,9 +3,6 @@ spec:
     server: https://kubernetes.default.svc
 
 externalDNS:
-  # the role to use in pods to assume in AWS
-  iamRole:
-  # the domain to filter out
-  domain:
-  # the ID of the Route53 hosted zone
-  txtOwnerID: 
+  iamRole: arn:aws:iam::593113792344:role/external-dns-role
+  domain: packtargocdbook.link
+  txtOwnerID: Z06553931QSUA8NK1ZT1N

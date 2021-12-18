@@ -29,11 +29,27 @@ locals {
         selfHeal: true
 
   EOT
+
+  values_dev = <<-EOT
+  spec:
+    destination:
+      server: https://kubernetes.default.svc
+
+  externalDNS:
+    iamRole: ${aws_iam_role.external_dns.arn}
+    domain: ${var.domain}
+    txtOwnerID: ${var.zone_id}
+  EOT
 }
 
 resource "local_file" "master_utils_values" {
   filename = "../k8s-bootstrap/base/master-utilities.yaml"
   content  = local.master_utils_values
+}
+
+resource "local_file" "master_utils_values_yaml" {
+  filename = "../applications/master-utilities/values.yaml"
+  content  = local.values_dev
 }
 
 data "kustomization_build" "argocd" {
@@ -45,5 +61,6 @@ resource "kustomization_resource" "argocd" {
   manifest = data.kustomization_build.argocd.manifests[each.value]
   depends_on = [
     local_file.master_utils_values,
+    local_file.master_utils_values_yaml,
   ]
 }

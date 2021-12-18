@@ -6,13 +6,15 @@ spec:
   generators:
    - matrix:
         generators:
-          # git generator, 'child' #1
           - git:
               repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
               revision: feat/ch06
               directories:
                 - path: ch05/applications/*
-          # list generator, 'child' #2
+                - path: ch05/applications/istio-control-plane
+                  exclude: true
+                - path: ch05/applications/argocd-ui
+                  exclude: true
           - list:
               elements:
               - cluster: engineering-dev
@@ -23,9 +25,13 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
+        repoURL: '{{repoURL}}'
         targetRevision: feat/ch06
         path: '{{path}}'
       destination:
         server: '{{url}}'
-        namespace: argocd
+        namespace: '{{path.basename}}'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
