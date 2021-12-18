@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-applicationset
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/argoproj-labs/applicationset.git
+    targetRevision: HEAD
+    path: manifests/namespace-install
+
+  destination:
+    namespace: argo-applicationset
+    server: https://kubernetes.default.svc
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

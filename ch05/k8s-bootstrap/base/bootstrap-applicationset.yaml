@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: bootstrap
+spec:
+  generators:
+   - matrix:
+        generators:
+          # git generator, 'child' #1
+          - git:
+              repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
+              revision: feat/ch06
+              directories:
+                - path: ch05/applications/applications
+          # list generator, 'child' #2
+          - list:
+              elements:
+              - cluster: engineering-dev
+                url: https://kubernetes.default.svc
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
+        targetRevision: feat/ch06
+        path: ch05/applications
+      destination:
+        server: '{{url}}'
+        namespace: argocd

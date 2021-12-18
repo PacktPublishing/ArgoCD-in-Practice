@@ -8,15 +8,15 @@ REGISTRY ?= spirosoik
 CH06_IMAGE ?= ${REGISTRY}/ch06:${TAG}
 ################################################################################
 
-.PHONY:
+.PHONY: build-linux
 build-linux: # Building linux binaries
-	@echo Building ${APP_VERSION} binary for linux
-	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -tags='${APP_VERSION}' -o bin/server ./cmd
+	@echo Building ${TAG} binary for linux
+	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-X 'main.BuildVersion=${TAG}'" -o bin/server ./cmd
 
-.PHONY:
+.PHONY: build-mac
 build-mac: # Building mac binaries
-	@echo Building ${APP_VERSION} binary for linux
-	GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 go build -tags='${APP_VERSION}' -o bin/server ./cmd
+	@echo Building ${TAG} binary for linux
+	GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-X 'main.BuildVersion=${TAG}'" -o bin/server ./cmd
 
 .PHONY: build-image
 build-image:  ## Build the docker image for mattermost-cloud
@@ -24,7 +24,7 @@ build-image:  ## Build the docker image for mattermost-cloud
 	docker build \
 	--build-arg DOCKER_BUILD_IMAGE=$(DOCKER_BUILD_IMAGE) \
 	--build-arg DOCKER_BASE_IMAGE=$(DOCKER_BASE_IMAGE) \
-	--build-arg APP_VERSION=$(TAG) \
+	--build-arg TAG=$(TAG) \
 	. -f Dockerfile -t $(CH06_IMAGE)
 
 .PHONY: push-docker
