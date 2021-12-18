@@ -42,14 +42,3 @@ spec:
         host: argocd-server.argocd.svc.cluster.local
         port:
           number: 443
-# ---
-# apiVersion: networking.istio.io/v1alpha3
-# kind: DestinationRule
-# metadata:
-#   name: argocd-server-dtrl
-#   namespace: argocd
-# spec:
-#   host: argocd-server.argocd.svc.cluster.local
-#   trafficPolicy:
-#     tls:
-#       mode: DISABLE
