@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: argocd-application-controller
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: argocd-application-controller
+          env:
+            - name: ARGOCD_CONTROLLER_REPLICAS
+              value: "3"
+          command:
+            - argocd-application-controller
+            - --status-processors
+            - "50"
+            - --operation-processors
+            - "25"
+            - --repo-server-timeout-seconds
+            - "300"
+            - --kubectl-parallelism-limit
+            - "30"

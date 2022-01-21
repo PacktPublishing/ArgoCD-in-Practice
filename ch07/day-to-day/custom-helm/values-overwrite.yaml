@@ -1,0 +1,21 @@
+repoServer:
+
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
+  
+  volumeMounts:
+    - mountPath: /usr/local/bin/helm
+      name: custom-tools
+      subPath: helm
+
+  initContainers:
+    - name: download-tools
+      image: alpine:3.15
+      command: [sh, -c]
+      args:
+        - wget -qO- https://get.helm.sh/helm-v3.5.1-linux-amd64.tar.gz | tar -xvzf - &&
+          mv linux-amd64/helm /custom-tools/
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools

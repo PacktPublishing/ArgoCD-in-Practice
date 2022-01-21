@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1 
+kind: Application 
+metadata:
+  name: argocd-nonprod
+spec: 
+  destination: 
+    namespace: argocd-nonprod
+    server: https://kubernetes.default.svc 
+  project: default 
+  source: 
+    path: ch7/initial-setup/argocd-nonprod
+    repoURL: https://github.com/lcostea/ArgoCD-in-Practice.git 
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: false

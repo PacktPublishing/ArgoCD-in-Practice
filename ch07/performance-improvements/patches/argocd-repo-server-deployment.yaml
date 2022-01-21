@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: argocd-repo-server
+          command:
+            - entrypoint.sh
+            - argocd-repo-server
+            - --redis
+            - $(ARGOCD_REDIS_SERVICE):6379
+            - --parallelismlimit
+            - "5"
+          env:
+            - name: "ARGOCD_EXEC_TIMEOUT"
+              value: "3m"
+            - name: "ARGOCD_GIT_ATTEMPTS_COUNT"
+              value: "3"

@@ -1,0 +1,21 @@
+controller:
+
+  args:
+    statusProcessors: "50"
+    operationProcessors: "25"
+    selfHealTimeout: "5"
+    repoServerTimeoutSeconds: "60"
+
+  extraArgs:
+    - --kubectl-parallelism-limit=30
+
+repoServer:
+
+  extraArgs:
+    - --parallelismlimit=5
+
+  env:
+    - name: "ARGOCD_GIT_ATTEMPTS_COUNT"
+      value: "3"
+    - name: "ARGOCD_EXEC_TIMEOUT"
+      value: "300"
