@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: traefik
+    repoURL: https://helm.traefik.io/traefik
+    targetRevision: 9.14.3
+    helm:
+      parameters:
+        - name: image.tag
+          value: "2.4.2"
+        - name: deployment.replicas
+          value: "3"
+        - name: podDisruptionBudget.enabled
+          value: "true"
+        - name: logs.general.level
+          value: "INFO"
+        - name: logs.access.enabled
+          value: "true"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: traefik
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true

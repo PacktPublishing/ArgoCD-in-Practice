@@ -1,0 +1,8 @@
+name: traefik-umbrella
+apiVersion: v2
+version: 0.1.0
+dependencies:
+- name: traefik
+  version: 9.14.3
+  repository: "https://helm.traefik.io/traefik"
+  alias: traefik

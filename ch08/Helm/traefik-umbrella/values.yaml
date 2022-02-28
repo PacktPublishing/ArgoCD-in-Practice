@@ -1,0 +1,12 @@
+traefik:
+  image:
+    tag: "2.4.2"
+  deployment:
+    replicas: 3
+  podDisruptionBudget:
+    enabled: true
+  logs:
+    general:
+      level: "INFO"
+    access:
+      enabled: "true"

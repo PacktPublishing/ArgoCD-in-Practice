@@ -1,0 +1,16 @@
+---
+# Source: traefik-umbrella/charts/traefik/templates/poddisruptionbudget.yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: RELEASE-NAME-traefik
+  labels:
+    app.kubernetes.io/name: traefik
+    helm.sh/chart: traefik-9.14.3
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/instance: RELEASE-NAME
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: traefik
+      app.kubernetes.io/instance: RELEASE-NAME
