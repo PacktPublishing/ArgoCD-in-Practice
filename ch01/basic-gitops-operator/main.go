@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	timerSec := 30 * time.Second
+	timerSec := 5 * time.Second
 	gitopsRepo := "https://github.com/lcostea/ArgoCD-in-Practice.git"
 	localPath := "tmp/"
 	pathToApply := "ch1/basic-gitops-operator-config"
@@ -39,7 +39,7 @@ func syncRepo(repoUrl, localPath string) error {
 		Progress: os.Stdout,
 	})
 
-	if err != nil && err == git.ErrRepositoryAlreadyExists {
+	if err == git.ErrRepositoryAlreadyExists {
 		repo, err := git.PlainOpen(localPath)
 		if err != nil {
 			return err
@@ -54,7 +54,7 @@ func syncRepo(repoUrl, localPath string) error {
 		})
 		// the library returns an "Already up to date" error if there is nothing to pull
 		// but in our case we don't consider it an error
-		if err != nil && err == git.NoErrAlreadyUpToDate {
+		if err == git.NoErrAlreadyUpToDate {
 			return nil
 		}
 		return err
