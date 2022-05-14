@@ -27,18 +27,20 @@ spec:
         app.kubernetes.io/name: gitops-agent
     spec:
       containers:
-        - command:
+        - image: argoproj/gitops-agent:latest
+          name: gitops-agent
+          command:
             - gitops
             - /tmp/git/repo
             - --path
             - ch06/simple-blue-green
             - --namespaced
-          image: argoproj/gitops-agent:latest
-          name: gitops-agent
           volumeMounts:
             - mountPath: /tmp/git
               name: git
-        - args:
+        - image: k8s.gcr.io/git-sync:v3.1.6
+          name: git-sync
+          args:
             - --webhook-url
             - http://localhost:9001/api/v1/sync
             - --dest
@@ -46,19 +48,10 @@ spec:
           env:
             - name: GIT_SYNC_REPO
               value: https://github.com/PacktPublishing/ArgoCD-in-Practice
-          image: k8s.gcr.io/git-sync:v3.1.6
-          name: git-sync
           volumeMounts:
             - mountPath: /tmp/git
               name: git
       serviceAccountName: gitops-agent
-      resources:
-        limits:
-          cpu: "1"
-          memory: "128Mi"
-        requests:
-          cpu: "0.5"
-          memory: "128Mi"
       volumes:
         - emptyDir: {}
           name: git
