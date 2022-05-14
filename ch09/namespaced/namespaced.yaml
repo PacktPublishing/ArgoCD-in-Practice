@@ -53,7 +53,7 @@ spec:
             - gitops
             - /tmp/git/repo
             - --path
-            - ch06/simple-blue-green
+            - ch09/namespaced/example
             - --namespaced
           volumeMounts:
             - mountPath: /tmp/git
