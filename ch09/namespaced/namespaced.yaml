@@ -65,6 +65,8 @@ spec:
             - http://localhost:9001/api/v1/sync
             - --dest
             - repo
+            - --branch
+            - main
           env:
             - name: GIT_SYNC_REPO
               value: https://github.com/PacktPublishing/ArgoCD-in-Practice
