@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: example-cli-utils
+spec:
+  selector:
+    matchLabels:
+      app: app
+      version: "1.0"
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: app
+        version: "1.0"
+    spec:
+      containers:
+        - name: service
+          image: spirosoik/ch06:v1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: "1"
+              memory: "128Mi"
+            requests:
+              cpu: "0.5"
+              memory: "128Mi"
