@@ -12,7 +12,7 @@ import (
 
 func main() {
 	timerSec := 5 * time.Second
-	gitopsRepo := "https://github.com/lcostea/ArgoCD-in-Practice.git"
+	gitopsRepo := "https://github.com/PacktPublishing/ArgoCD-in-Practice.git"
 	localPath := "tmp/"
 	pathToApply := "ch1/basic-gitops-operator-config"
 	for {

@@ -9,7 +9,7 @@ spec:
   project: default 
   source: 
     path: ch7/initial-setup/argocd-platform
-    repoURL: https://github.com/lcostea/ArgoCD-in-Practice.git 
+    repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git 
     targetRevision: main
   syncPolicy:
     automated:
