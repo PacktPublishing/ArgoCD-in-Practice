@@ -4,12 +4,12 @@ metadata:
   name: nginx
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
     automated:
-        prune: true
-        selfHeal: true
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
   destination:
@@ -19,4 +19,4 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: nginx
-    targetRevision: 9.5.3
+    targetRevision: 13.2.10
