@@ -65,3 +65,8 @@ started as a developer in the early 2000 and his career path took him to differe
 
 In 2018 he started with the Platform Team and then he was the Tech Lead in the Release Team at Mambu, where they designed most of the CI/CD pipelines, adopting GitOps practices. They have been live with Argo CD since 2019. More recently he joined Juni, a promising startup, where they are planning the GitOps adoption. For his contributions to OSS projects, including Argo CD, he was named CNCF Ambassador in August 2020.
 
+
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781803233321">https://packt.link/free-ebook/9781803233321 </a> </p>
