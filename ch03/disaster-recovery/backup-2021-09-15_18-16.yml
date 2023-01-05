@@ -96,7 +96,7 @@ kind: Application
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"argoproj.io/v1alpha1","kind":"Application","metadata":{"annotations":{},"name":"argocd","namespace":"argocd"},"spec":{"destination":{"namespace":"argocd","server":"https://kubernetes.default.svc"},"project":"default","source":{"path":"ch3/kustomize-installation","repoURL":"https://github.com/PacktPublishing/ArgoCD-in-Practice.git","targetRevision":"main"},"syncPolicy":{"automated":{}}}}
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Application","metadata":{"annotations":{},"name":"argocd","namespace":"argocd"},"spec":{"destination":{"namespace":"argocd","server":"https://kubernetes.default.svc"},"project":"default","source":{"path":"ch03/kustomize-installation","repoURL":"https://github.com/PacktPublishing/ArgoCD-in-Practice.git","targetRevision":"main"},"syncPolicy":{"automated":{}}}}
   name: argocd
 spec:
   destination:
@@ -104,7 +104,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: ch3/kustomize-installation
+    path: ch03/kustomize-installation
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: main
   syncPolicy:
@@ -118,7 +118,7 @@ status:
     id: 0
     revision: 38f5370f7f0309fefaa53b75f65d373f824043be
     source:
-      path: ch3/kustomize-installation
+      path: ch03/kustomize-installation
       repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
       targetRevision: main
   operationState:
@@ -644,7 +644,7 @@ status:
         version: v1
       revision: 38f5370f7f0309fefaa53b75f65d373f824043be
       source:
-        path: ch3/kustomize-installation
+        path: ch03/kustomize-installation
         repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
         targetRevision: main
   reconciledAt: "2021-09-15T18:14:04Z"
@@ -982,7 +982,7 @@ status:
         namespace: argocd
         server: https://kubernetes.default.svc
       source:
-        path: ch3/kustomize-installation
+        path: ch03/kustomize-installation
         repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
         targetRevision: main
     revision: 38f5370f7f0309fefaa53b75f65d373f824043be
