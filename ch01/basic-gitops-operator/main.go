@@ -14,7 +14,7 @@ func main() {
 	timerSec := 5 * time.Second
 	gitopsRepo := "https://github.com/PacktPublishing/ArgoCD-in-Practice.git"
 	localPath := "tmp/"
-	pathToApply := "ch1/basic-gitops-operator-config"
+	pathToApply := "ch01/basic-gitops-operator-config"
 	for {
 		fmt.Println("start repo sync")
 		err := syncRepo(gitopsRepo, localPath)
