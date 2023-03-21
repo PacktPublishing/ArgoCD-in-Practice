@@ -8,7 +8,7 @@ spec:
     server: https://kubernetes.default.svc 
   project: default 
   source: 
-    path: ch7/initial-setup/argocd-prod
+    path: ch07/initial-setup/argocd-prod
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git 
     targetRevision: main
   syncPolicy:
