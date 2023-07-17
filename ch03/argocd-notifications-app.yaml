@@ -8,7 +8,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: ch3/notifications
+    path: ch03/notifications
     repoURL: https://github.com/PacktPublishing/ArgoCD-in-Practice.git
     targetRevision: main
   syncPolicy:
